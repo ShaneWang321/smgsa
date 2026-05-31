@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>114畢聯會交接清單</title>
+<style>
+  body {
+    font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    padding: 40px;
+    background: #f5f5f0;
+  }
+  h1 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+  h2 {
+    font-size: 16px;
+    margin: 30px 0 10px;
+    border-left: 4px solid #2d5a27;
+    padding-left: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  th, td {
+    border: 1px solid #999;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  th {
+    background: #2d5a27;
+    color: #fff;
+    font-weight: 600;
+  }
+  .cat-header td {
+    background: #dce8d8;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 12px;
+  }
+  .editable {
+    background: #fffde7;
+    min-width: 80px;
+  }
+  .note {
+    text-align: left;
+    font-size: 12px;
+    color: #555;
+  }
+  .amount {
+    text-align: right;
+  }
+  .summary-table td:first-child {
+    text-align: left;
+    padding-left: 12px;
+  }
+  .summary-table .total td {
+    font-weight: 700;
+    background: #e8f5e9;
+  }
+  .sign-table td {
+    height: 50px;
+    text-align: left;
+    padding-left: 12px;
+  }
+  .sign-table .label {
+    width: 200px;
+    font-weight: 600;
+  }
+  .print-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 40px;
+    background: #2d5a27;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .print-btn:hover { background: #3a7532; }
+  @media print {
+    .print-btn { display: none; }
+    body { background: #fff; padding: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>114 畢聯會採購物資——交接清單</h1>
+<p class="subtitle">總請購金額：NT$ 12,629 &nbsp;｜&nbsp; 請盤點後填入剩餘數量</p>
+
+<button class="print-btn" onclick="window.print()">🖨️ 列印 / 存成 PDF</button>
+
+<h2>一、工具／耐用品（整件交接）</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width:50px">序號</th>
+      <th style="width:130px">項目</th>
+      <th style="width:90px">原費用</th>
+      <th style="width:100px">剩餘數量</th>
+      <th style="width:110px">狀態（正常/損壞）</th>
+      <th>備註</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td><td>剪刀、螺旋鎖定美工刀</td>
+      <td class="amount">714</td>
+      <td class="editable">&nbsp;</td>
+      <td class="editable">&nbsp;</td>
+      <td class="note">剪刀可留；美工刀刀片為耗材</td>
+    </tr>
+    <tr>
+      <td>2</td><td>剪刀、美工刀替芯</td>
+      <td class="amount">515</td>
+      <td class="editable">&nbsp;</td>
+      <td class="editable">&nbsp;</td>
+      <td class="note">分別註記數量</td>
+    </tr>
+    <tr>
+      <td>8</td><td>牛仔裝</td>
+      <td class="amount">630</td>
+      <td class="editable">&nbsp;</td>
+      <td class="editable">&nbsp;</td>
+      <td class="note">表演服裝，確認無破損汙漬</td>
+    </tr>
+    <tr>
+      <td>27</td><td>打氣筒（金屬筆、氣球、打氣筒 共 355）</td>
+      <td class="amount">355</td>
+      <td class="editable">&nbsp;</td>
+      <td class="editable">&nbsp;</td>
+      <td class="note">打氣筒整件交接；金屬筆、氣球歸下方耗材</td>
+    </tr>
+    <tr class="cat-header">
+      <td colspan="2">工具小計</td>
+      <td class="amount">2,214</td>
+      <td colspan="3"></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>二、耗材（盤點剩餘數量）</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width:50px">序號</th>
+      <th style="width:180px">項目</th>
+      <th style="width:90px">原費用</th>
+      <th style="width:120px">剩餘數量</th>
+      <th>備註</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>3</td><td>書面紙、速乾筆、透明膠帶</td><td class="amount">708</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>4</td><td>壓克力筆</td><td class="amount">658</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>5</td><td>有背膠黏扣帶</td><td class="amount">122</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>6</td><td>全開書面紙</td><td class="amount">224</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>7</td><td>四維雙面膠帶、美術紙</td><td class="amount">391</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>9</td><td>美術紙、白板筆</td><td class="amount">268</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>10</td><td>膠帶</td><td class="amount">158</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>11</td><td>棉花</td><td class="amount">90</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>12</td><td>保麗龍膠、粘扣帶</td><td class="amount">222</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>13</td><td>膠帶、建美膠圈</td><td class="amount">178</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>14</td><td>雙面膠帶</td><td class="amount">495</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>15</td><td>美術紙、亮片、手工藝品、金蔥銀</td><td class="amount">416</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>16</td><td>貼飾、彈力毛</td><td class="amount">44</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>17</td><td>口紅膠、透明膠帶</td><td class="amount">410</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>18</td><td>油漆筆</td><td class="amount">120</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>19</td><td>黏扣帶</td><td class="amount">108</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>20</td><td>玻璃紙、文具</td><td class="amount">1,104</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>21</td><td>美術紙</td><td class="amount">210</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>22</td><td>煙霧油</td><td class="amount">910</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>23</td><td>美術紙</td><td class="amount">448</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>24</td><td>彩帶（拍貼機）</td><td class="amount">1,788</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>25</td><td>膠帶</td><td class="amount">195</td><td class="editable">&nbsp;</td><td class="note"></td></tr>
+    <tr><td>26</td><td>美術紙、膠帶</td><td class="amount">630</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr><td>27</td><td>金屬筆、氣球</td><td class="amount">—</td><td class="editable">&nbsp;</td><td class="note">含在序號27的355內</td></tr>
+    <tr><td>28</td><td>膠帶、口紅膠、氣球</td><td class="amount">518</td><td class="editable">&nbsp;</td><td class="note">分別註記</td></tr>
+    <tr class="cat-header">
+      <td colspan="2">耗材原總費用</td>
+      <td class="amount">10,415</td>
+      <td colspan="2"></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>匯總</h2>
+<table class="summary-table">
+  <tr><td>原總請購金額</td><td class="amount">NT$ 12,629</td></tr>
+  <tr><td>可交接物品原總值</td><td class="amount">NT$ 12,629</td></tr>
+  <tr class="total"><td>交接實際估計總價值（盤點後填入）</td><td class="amount editable" style="min-width:150px">&nbsp;</td></tr>
+</table>
+
+<h2>交接簽收</h2>
+<table class="sign-table">
+  <tr>
+    <td class="label">114 畢聯會移交人</td>
+    <td class="editable" style="min-width:180px">&nbsp;</td>
+    <td class="label" style="width:80px">日期</td>
+    <td class="editable" style="width:130px">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="label">115 畢聯會接收人</td>
+    <td class="editable">&nbsp;</td>
+    <td class="label">日期</td>
+    <td class="editable">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="label">訓導處見證人</td>
+    <td class="editable">&nbsp;</td>
+    <td class="label">日期</td>
+    <td class="editable">&nbsp;</td>
+  </tr>
+</table>
+
+<button class="print-btn" onclick="window.print()">🖨️ 列印 / 存成 PDF</button>
+
+</body>
+</html>
