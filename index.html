@@ -1,263 +1,670 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>114畢聯會快速盤點表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Graduation PROM — BINGO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300&family=Noto+Sans+TC:wght@300;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: "Microsoft JhengHei", sans-serif;
-    padding: 30px 40px;
-    background: #f7f6f1;
-    color: #222;
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #07080e;
+    --gold: #c9a84c;
+    --gold-light: #e8d48b;
+    --gold-glow: #c9a84c25;
+    --cream: #f2ebe0;
+    --cream-dim: #5a564e;
+    --cream-muted: #8a8478;
+    --surface: #0d0f17;
+    --border: #ffffff08;
+    --rose: #8b3a4a;
   }
-  h1 {
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 4px;
-    letter-spacing: 2px;
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    cursor: default;
+    user-select: none;
   }
-  .sub {
-    text-align: center;
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 24px;
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 80%, #15101a 0%, transparent 45%),
+      radial-gradient(ellipse at 75% 20%, #0e141e 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 50%, #0a0b10 0%, transparent 60%);
+    z-index: 0;
   }
-  .zone {
-    margin-bottom: 28px;
-    page-break-inside: avoid;
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 0;
   }
-  .zone-title {
-    font-size: 16px;
-    font-weight: 700;
-    background: #2d5a27;
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 4px 4px 0 0;
+
+  .page {
+    position: relative;
+    z-index: 1;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    height: 100vh;
   }
-  .zone-title .num {
-    background: #fff;
-    color: #2d5a27;
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    display: inline-flex;
+
+  /* ── Top ── */
+  .top-bar {
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-weight: 700;
+    gap: 24px;
+    padding: 20px 40px 0;
+    opacity: 0.5;
+    flex-shrink: 0;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
+
+  .top-bar span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
   }
-  th {
-    background: #e8f0e4;
-    padding: 7px 10px;
-    border: 1px solid #bbb;
-    font-weight: 600;
-    text-align: center;
+
+  .top-bar .dot {
+    width: 3px; height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.6;
   }
-  td {
-    padding: 7px 10px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-  .item { text-align: left; padding-left: 12px; font-weight: 500; }
-  .fill {
-    background: #fffde7;
-    min-width: 60px;
-  }
-  .qty-col { min-width: 70px; }
-  .diff-pos { color: #2e7d32; font-weight: 700; }
-  .diff-neg { color: #c62828; font-weight: 700; }
-  .section-row td {
-    background: #f0ece4;
-    font-weight: 700;
-    text-align: left;
-    padding-left: 14px;
-    font-size: 13px;
-  }
-  .sign-area {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  .sign-box {
+
+  /* ── Stage ── */
+  .stage {
     flex: 1;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    padding: 12px;
-    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   }
-  .sign-box .label { font-weight: 700; margin-bottom: 30px; }
-  .sign-box .line {
-    border-bottom: 1px solid #333;
-    height: 30px;
-    margin-bottom: 6px;
+
+  .stage::before, .stage::after {
+    content: '';
+    position: absolute;
+    width: 140px; height: 140px;
+    border-color: var(--gold-glow);
+    border-style: solid;
+    pointer-events: none;
+    opacity: 0.6;
   }
-  .tips {
-    background: #fff8e1;
-    border-left: 4px solid #f9a825;
-    padding: 12px 16px;
-    font-size: 12px;
-    margin-bottom: 20px;
-    line-height: 1.7;
-    border-radius: 0 4px 4px 0;
+
+  .stage::before { top: 30px; left: 50px; border-width: 1px 0 0 1px; }
+  .stage::after { bottom: 20px; right: 50px; border-width: 0 1px 1px 0; }
+
+  .number-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
   }
-  .btn {
-    display: block;
-    margin: 20px auto 0;
-    padding: 12px 40px;
-    background: #2d5a27;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
+
+  .number-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+
+  .current-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 28rem;
+    line-height: 1;
+    color: var(--cream);
+    text-shadow:
+      0 0 100px var(--gold-glow),
+      0 0 200px #c9a84c10;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .current-number.spinning {
+    color: var(--cream-dim);
+    text-shadow: none;
+    animation: pulse 0.08s ease-in-out infinite alternate;
+  }
+
+  .current-number.landed {
+    color: var(--gold);
+    text-shadow:
+      0 0 80px var(--gold-glow),
+      0 0 160px #c9a84c18,
+      0 0 240px #c9a84c08;
+    animation: land 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes pulse { from { opacity: 0.4; } to { opacity: 0.65; } }
+  @keyframes land { 0% { transform: scale(1.12); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+
+  .number-divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin-top: 20px;
+    opacity: 0.4;
+  }
+
+  .glow-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 500px; height: 500px;
+    margin: -250px 0 0 -250px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .glow-ring.active {
+    animation: ring 1.4s ease-out forwards;
+  }
+
+  @keyframes ring {
+    0% { transform: scale(0.4); opacity: 0.35; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  /* ── Sound Toggle ── */
+  .sound-toggle {
+    position: fixed;
+    top: 20px;
+    right: 28px;
+    z-index: 10;
+    padding: 6px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    background: transparent;
+    border: 1px solid var(--border);
     cursor: pointer;
-    font-family: inherit;
+    transition: all 0.25s ease;
+    opacity: 0.5;
   }
-  .btn:hover { background: #3a7532; }
-  @media print {
-    .btn { display: none; }
-    body { background: #fff; padding: 15px; }
+
+  .sound-toggle:hover { opacity: 1; border-color: var(--gold-glow); color: var(--gold-light); }
+  .sound-toggle.on { color: var(--gold); border-color: var(--gold-glow); opacity: 0.7; }
+
+  /* ── Bottom Bar ── */
+  .bottom-bar {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 36px 20px;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(0deg, #0a0b10 0%, #0a0b10cc 60%, transparent 100%);
+  }
+
+  .spin-btn {
+    flex-shrink: 0;
+    padding: 14px 44px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .spin-btn::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid #c9a84c12;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .spin-btn:hover {
+    background: var(--gold);
+    color: var(--bg);
+    box-shadow: 0 0 30px var(--gold-glow);
+  }
+
+  .spin-btn:hover::before { border-color: transparent; }
+  .spin-btn:active { transform: scale(0.97); }
+
+  .spin-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    background: transparent;
+    color: var(--gold);
+    box-shadow: none;
+  }
+
+  .bar-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+
+  .called-strip-wrap {
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .called-strip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-bottom: 6px;
+    opacity: 0.5;
+  }
+
+  .called-strip {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .called-strip::-webkit-scrollbar { display: none; }
+
+  .chip {
+    flex-shrink: 0;
+    width: 36px; height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--cream-dim);
+    background: #ffffff06;
+    border: 1px solid var(--border);
+    transition: all 0.25s ease;
+  }
+
+  .chip.latest {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+    box-shadow: 0 0 10px var(--gold-glow);
+    animation: chipPop 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  @keyframes chipPop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+  .winner-btn {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--cream-dim);
+    background: transparent;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .winner-btn:hover { border-color: var(--gold-glow); color: var(--gold-light); }
+
+  /* ── Winner Overlay ── */
+  .winner-overlay {
+    position: fixed; inset: 0;
+    z-index: 100;
+    background: #07080eee;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+  }
+
+  .winner-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .winner-card {
+    text-align: center;
+    animation: wIn 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes wIn { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+
+  .winner-card .star { font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold); margin-bottom: 16px; opacity: 0.8; }
+
+  .winner-card h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 4rem; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 12px; }
+
+  .winner-card p { font-size: 1.2rem; color: var(--cream-muted); font-weight: 300; letter-spacing: 0.06em; margin-bottom: 40px; }
+
+  .winner-card button {
+    padding: 14px 48px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .winner-card button:hover { background: var(--gold); color: var(--bg); }
+
+  .confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 120; overflow: hidden; }
+
+  .confetti-piece {
+    position: absolute; top: -12px; opacity: 0;
+    animation: confFall linear forwards;
+  }
+
+  @keyframes confFall {
+    0% { transform: translateY(0) rotateZ(0) rotateX(0); opacity: 0.85; }
+    100% { transform: translateY(108vh) rotateZ(600deg) rotateX(300deg); opacity: 0; }
+  }
+
+  .mote {
+    position: fixed;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
   }
 </style>
 </head>
 <body>
 
-<h1>114 畢聯會物資快速盤點表</h1>
-<p class="sub">總請購金額：NT$ 12,629 ｜ 盤點日期：____/____/____ ｜ 採「定點定量」整包計數法</p>
+<div id="motes"></div>
 
-<button class="btn" onclick="window.print()">🖨️ 列印 / 存成 PDF</button>
+<div class="page">
+  <div class="top-bar">
+    <span>SMGSA 28th</span>
+    <div class="dot"></div>
+    <span>Graduation PROM</span>
+    <div class="dot"></div>
+    <span>2026.06.02</span>
+    <div class="dot"></div>
+    <span>MEMORIES</span>
+  </div>
 
-<!-- ════════ A區：美宣工具 ════════ -->
-<div class="zone">
-  <div class="zone-title"><span class="num">A</span> 美宣工具區 ｜ 盤點人：＿＿＿＿＿</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:40px">#</th>
-        <th>品名</th>
-        <th class="qty-col">計數單位</th>
-        <th class="qty-col">原購數量</th>
-        <th class="qty-col">盤點數量</th>
-        <th class="qty-col">差異</th>
-        <th>備註</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td class="item">剪刀、螺旋鎖定美工刀</td><td>把</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>2</td><td class="item">剪刀</td><td>把</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>3</td><td class="item">美工刀替芯</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>4</td><td class="item">油漆筆</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>5</td><td class="item">壓克力筆</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>6</td><td class="item">金屬筆</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>7</td><td class="item">速乾筆</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>8</td><td class="item">白板筆</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-    </tbody>
-  </table>
+  <main class="stage">
+    <div class="number-container">
+      <div class="glow-ring" id="glowRing"></div>
+      <div class="number-label">B I N G O</div>
+      <div class="current-number" id="currentNumber">?</div>
+      <div class="number-divider"></div>
+    </div>
+  </main>
+
+  <div class="bottom-bar">
+    <button class="spin-btn" id="spinBtn" onclick="spin()">抽號碼</button>
+    <div class="bar-divider"></div>
+    <div class="called-strip-wrap">
+      <div class="called-strip-label">Called Numbers</div>
+      <div class="called-strip" id="calledStrip"></div>
+    </div>
+    <div class="bar-divider"></div>
+    <button class="winner-btn" onclick="announceWinner()">宣布中獎</button>
+  </div>
 </div>
 
-<!-- ════════ B區：紙類 ════════ -->
-<div class="zone">
-  <div class="zone-title"><span class="num">B</span> 紙類區 ｜ 盤點人：＿＿＿＿＿</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:40px">#</th>
-        <th>品名</th>
-        <th class="qty-col">計數單位</th>
-        <th class="qty-col">原購數量</th>
-        <th class="qty-col">盤點數量</th>
-        <th class="qty-col">差異</th>
-        <th>備註</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td class="item">全開書面紙</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>2</td><td class="item">美術紙（序號7）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>3</td><td class="item">美術紙（序號9）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>4</td><td class="item">美術紙（序號15）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>5</td><td class="item">美術紙（序號21）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>6</td><td class="item">美術紙（序號23）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>7</td><td class="item">美術紙、膠帶（序號26）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>8</td><td class="item">玻璃紙（序號20）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>9</td><td class="item">書面紙（序號3）</td><td>張</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-    </tbody>
-  </table>
+<button class="sound-toggle" id="soundToggle" onclick="toggleSound()">Sound OFF</button>
+
+<div class="winner-overlay" id="winnerOverlay">
+  <div class="winner-card">
+    <div class="star">✦</div>
+    <h2>CONGRATULATIONS</h2>
+    <p>恭喜中獎 — 請舉手示意，工作人員將送上門票</p>
+    <button onclick="closeWinner()">繼續遊戲</button>
+  </div>
 </div>
 
-<!-- ════════ C區：膠帶/黏著類 ════════ -->
-<div class="zone">
-  <div class="zone-title"><span class="num">C</span> 膠帶 & 黏著類區 ｜ 盤點人：＿＿＿＿＿</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:40px">#</th>
-        <th>品名</th>
-        <th class="qty-col">計數單位</th>
-        <th class="qty-col">原購數量</th>
-        <th class="qty-col">盤點數量</th>
-        <th class="qty-col">差異</th>
-        <th>備註</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td class="item">透明膠帶（序號3）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>2</td><td class="item">四維雙面膠帶（序號7）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>3</td><td class="item">膠帶（序號10）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>4</td><td class="item">保麗龍膠（序號12）</td><td>條</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>5</td><td class="item">膠帶（序號13）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>6</td><td class="item">雙面膠帶（序號14）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>7</td><td class="item">口紅膠（序號17）</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>8</td><td class="item">透明膠帶（序號17）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>9</td><td class="item">有背膠黏扣帶（序號5）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>10</td><td class="item">粘扣帶（序號12）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>11</td><td class="item">黏扣帶（序號19）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>12</td><td class="item">建美膠圈（序號13）</td><td>包</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>13</td><td class="item">彩帶（拍貼機）（序號24）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>14</td><td class="item">膠帶（序號25）</td><td>捲</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>15</td><td class="item">膠帶、口紅膠（序號28）</td><td>捲/支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-    </tbody>
-  </table>
-</div>
+<div class="confetti-container" id="confetti"></div>
 
-<!-- ════════ D區：道具 / 雜項 ════════ -->
-<div class="zone">
-  <div class="zone-title"><span class="num">D</span> 道具 & 雜項區 ｜ 盤點人：＿＿＿＿＿</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width:40px">#</th>
-        <th>品名</th>
-        <th class="qty-col">計數單位</th>
-        <th class="qty-col">原購數量</th>
-        <th class="qty-col">盤點數量</th>
-        <th class="qty-col">差異</th>
-        <th>備註</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td class="item">牛仔裝</td><td>件</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>2</td><td class="item">打氣筒</td><td>支</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>3</td><td class="item">氣球（序號27）</td><td>包/顆</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>4</td><td class="item">氣球（序號28）</td><td>包/顆</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>5</td><td class="item">棉花</td><td>包</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>6</td><td class="item">亮片</td><td>包</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>7</td><td class="item">金蔥銀</td><td>包</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>8</td><td class="item">手工藝品</td><td>包</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>9</td><td class="item">貼飾、彈力毛</td><td>包</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>10</td><td class="item">煙霧油</td><td>瓶</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-      <tr><td>11</td><td class="item">文具（序號20）</td><td>件</td><td class="fill"></td><td class="fill"></td><td class="fill"></td><td class="fill"></td></tr>
-    </tbody>
-  </table>
+<script>
+  // ── State ──
+  const TOTAL = 200;
+  let calledSet = new Set();
+  let isSpinning = false;
+  let spinTimer = null;
+  let soundOn = false;
 
-<button class="btn" onclick="window.print()">🖨️ 列印 / 存成 PDF</button>
+  const el = document.getElementById('currentNumber');
+  const strip = document.getElementById('calledStrip');
+  const ring = document.getElementById('glowRing');
+  const soundBtn = document.getElementById('soundToggle');
 
+  // ── Audio Engine ──
+  let audioCtx = null;
+
+  function ensureAudio() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function toggleSound() {
+    soundOn = !soundOn;
+    soundBtn.textContent = soundOn ? 'Sound ON' : 'Sound OFF';
+    soundBtn.classList.toggle('on', soundOn);
+    if (soundOn) ensureAudio();
+  }
+
+  // Tick: short click during spin
+  function playTick(progress) {
+    if (!soundOn) return;
+    const ctx = ensureAudio();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    // Pitch rises as spin slows
+    osc.frequency.value = 300 + progress * 400;
+    gain.gain.setValueAtTime(0.06, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.04);
+  }
+
+  // Land: satisfying ding chord
+  function playLand() {
+    if (!soundOn) return;
+    const ctx = ensureAudio();
+    const freqs = [523.25, 659.25, 783.99]; // C5 E5 G5 major chord
+    freqs.forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      const vol = 0.08 - i * 0.015;
+      gain.gain.setValueAtTime(vol, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+      osc.start(ctx.currentTime + i * 0.06);
+      osc.stop(ctx.currentTime + 1.2);
+    });
+    // Subtle shimmer
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.connect(gain2);
+    gain2.connect(ctx.destination);
+    osc2.type = 'triangle';
+    osc2.frequency.value = 1046.5; // C6
+    gain2.gain.setValueAtTime(0.03, ctx.currentTime + 0.05);
+    gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+    osc2.start(ctx.currentTime + 0.05);
+    osc2.stop(ctx.currentTime + 0.8);
+  }
+
+  // Winner: triumphant ascending fanfare
+  function playWinner() {
+    if (!soundOn) return;
+    const ctx = ensureAudio();
+    // Arpeggio: C5 → E5 → G5 → C6
+    const notes = [523.25, 659.25, 783.99, 1046.50];
+    notes.forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      const t = ctx.currentTime + i * 0.12;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(0.1 - i * 0.01, t + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 1.8);
+      osc.start(t);
+      osc.stop(t + 1.8);
+    });
+    // Sustain pad
+    [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      const t = ctx.currentTime + 0.48;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(0.04, t + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 2.5);
+      osc.start(t);
+      osc.stop(t + 2.5);
+    });
+  }
+
+  // ── Motes ──
+  (function() {
+    const c = document.getElementById('motes');
+    for (let i = 0; i < 12; i++) {
+      const m = document.createElement('div');
+      m.className = 'mote';
+      m.style.left = Math.random() * 100 + '%';
+      m.style.animation = `mFloat ${10+Math.random()*10}s ${Math.random()*10}s ease-in-out infinite`;
+      c.appendChild(m);
+    }
+    const s = document.createElement('style');
+    s.textContent = `@keyframes mFloat{0%{opacity:0;transform:translateY(100vh)}15%{opacity:0.25}85%{opacity:0.25}100%{opacity:0;transform:translateY(-8vh)}}`;
+    document.head.appendChild(s);
+  })();
+
+  // ── Spin ──
+  function spin() {
+    if (isSpinning) return;
+    const rem = [];
+    for (let i = 1; i <= TOTAL; i++) if (!calledSet.has(i)) rem.push(i);
+    if (!rem.length) return;
+
+    if (soundOn) ensureAudio();
+    isSpinning = true;
+    document.getElementById('spinBtn').disabled = true;
+    el.classList.add('spinning');
+    el.classList.remove('landed');
+
+    let t = 0;
+    const total = 22 + Math.floor(Math.random() * 12);
+    const curve = [];
+    for (let i = 0; i < total; i++) {
+      curve.push(35 + Math.pow(i / total, 2.8) * 420);
+    }
+
+    function tick() {
+      if (t >= total) {
+        const pick = rem[Math.floor(Math.random() * rem.length)];
+        calledSet.add(pick);
+        el.textContent = pick;
+        el.classList.remove('spinning');
+        el.classList.add('landed');
+        isSpinning = false;
+        document.getElementById('spinBtn').disabled = false;
+        addChip(pick);
+        triggerRing();
+        playLand();
+        return;
+      }
+      el.textContent = rem[Math.floor(Math.random() * rem.length)];
+      playTick(t / total);
+      t++;
+      spinTimer = setTimeout(tick, curve[t - 1]);
+    }
+    tick();
+  }
+
+  function triggerRing() {
+    ring.classList.remove('active');
+    void ring.offsetWidth;
+    ring.classList.add('active');
+    setTimeout(() => ring.classList.remove('active'), 1500);
+  }
+
+  function addChip(num) {
+    const c = document.createElement('div');
+    c.className = 'chip latest';
+    c.textContent = num;
+    strip.prepend(c);
+    strip.scrollLeft = 0;
+    setTimeout(() => c.classList.remove('latest'), 2500);
+  }
+
+  function announceWinner() {
+    document.getElementById('winnerOverlay').classList.add('active');
+    fireConfetti();
+    playWinner();
+  }
+
+  function closeWinner() {
+    document.getElementById('winnerOverlay').classList.remove('active');
+  }
+
+  function fireConfetti() {
+    const box = document.getElementById('confetti');
+    const colors = ['#c9a84c','#e8d48b','#f2ebe0','#8b3a4a','#c76b7e','#fff'];
+    for (let i = 0; i < 50; i++) {
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      const sz = 4 + Math.random() * 6;
+      p.style.width = sz + 'px';
+      p.style.height = (Math.random() > 0.5 ? sz * 2.5 : sz) + 'px';
+      p.style.borderRadius = Math.random() > 0.6 ? '50%' : '1px';
+      p.style.animationDuration = (3 + Math.random() * 2.5) + 's';
+      p.style.animationDelay = Math.random() * 0.5 + 's';
+      box.appendChild(p);
+    }
+    setTimeout(() => box.innerHTML = '', 6000);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && !isSpinning) { e.preventDefault(); spin(); }
+  });
+</script>
 </body>
 </html>
